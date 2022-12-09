@@ -2,6 +2,7 @@ import { Login } from './Login';
 import './App.css';
 import Register from './Register';
 import React, {useState} from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 // route === "login" && <Login setRoute={setRoute} />
 // if route === "login" then return <Login />
@@ -27,11 +28,17 @@ function App() {
 
   return (
     <div className="App">
-      {
+      
+        <Routes >
+          <Route path='/login'  element={<Login></Login>}></Route>
+          <Route path='/register'  element={<Register></Register>}></Route>
+        </Routes>
+      
+      {/* {
         routes.map(route => (
           window.location.href.includes(route.path) ? route.element : null
         ))
-      }
+      } */}
     </div>
   );
 }
