@@ -11,22 +11,22 @@ const Register= () => {
     return(
         <div>
             <form className="form" onSubmit={handleSubmit}>
-            <label> Full Name</label>
-            <input
-                type="text"
-                id="firstName"
-                name="firstName"
-            />
-            <br/>
-            <label>Email</label>
-            <input
-                type="text"
-                id="lastName"
-                name="lastName"
-            /><button type="onSubmit">Login</button>
+                <label> Fisrt Name</label>
+                <input type="text" id="firstName" name="firstName"/>
+                <br/>
+                <label>Surname</label>
+                <input type="text" id="surname" name="surname"/>
+                <br/>
+                 <label>Date of Birth</label>
+                 <input type="text" id="DOB" name="DOB"/>
+                <br/>
+                <label>Email</label>
+                <input type="text" id="lastName" name="lastName"/>
+                <label></label>
+                <button type="onSubmit">Register</button>
            </form>
            <Link to='/login'>
-                <button>login</button>
+                <button>Sign In</button>    
            </Link>
         </div>
     )
