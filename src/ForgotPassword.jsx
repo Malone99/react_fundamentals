@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ForgotPasword=()=>{
+const ForgotPasword = () => {
 
-    function handleChange (){
-       <Link to={'/reset-password'}></Link>
+    function handleChange() {
     }
 
-    return(
+    return (
         <div>
             <h1>Forgot Password</h1>
-             <button onClick={()=> handleChange()}>Reset Password</button>
+            <Link to={'/reset-password'}>Reset Password</Link>
         </div>
     )
 
