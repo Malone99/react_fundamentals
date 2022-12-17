@@ -35,7 +35,7 @@ function App() {
     <div className="App">
 
         <Routes >
-          <Route path='/' element={<div> 
+          <Route path='/' element={<div>   
             <Link to='/login'>Click me Friend</Link>
           </div>}></Route>
           <Route path='/login'  element={<Login></Login>}></Route>
@@ -44,7 +44,7 @@ function App() {
           <Route path='/reset-password'  element={<ResetPassword></ResetPassword>}></Route>
         </Routes>
        
-      
+        
       {/* {
         routes.map(route => (
           window.location.href.includes(route.path) ? route.element : null

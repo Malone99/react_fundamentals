@@ -13,9 +13,9 @@ export const Login = (props) => {
     }
     const navigate = useNavigate();
 
-
     return(
         <div>
+
            <form className="form" onSubmit={handleSubmit}>
             <label> Email</label>
             <input
@@ -32,6 +32,7 @@ export const Login = (props) => {
             <button type="onSubmit">Login</button>
            </form>
            <Link to={'/forgot-password'}><p>Forgot password</p></Link> 
+           <button onClick={()=>navigate('/')}>Home</button>
         </div>
     )
 }; 
