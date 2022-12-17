@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import ResetPassword from './ResetPassword';
 import ForgotPasword from './ForgotPassword';
 import EmailClient from './EmailClient';
+import { Link, useNavigate } from "react-router-dom";
 
 // route === "login" && <Login setRoute={setRoute} />
 // if route === "login" then return <Login />
@@ -32,14 +33,17 @@ function App() {
 
   return (
     <div className="App">
-      
+
         <Routes >
+          <Route path='/' element={<div> 
+            <Link to='/login'>Click me Friend</Link>
+          </div>}></Route>
           <Route path='/login'  element={<Login></Login>}></Route>
           <Route path='/register'  element={<Register></Register>}></Route>
           <Route path='/forgot-password' element= {<ForgotPasword></ForgotPasword>}></Route>
           <Route path='/reset-password'  element={<ResetPassword></ResetPassword>}></Route>
         </Routes>
-        <ForgotPasword> </ForgotPasword>
+       
       
       {/* {
         routes.map(route => (

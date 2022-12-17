@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ForgotPasword from "./ForgotPassword";
 
 export const Login = (props) => {
 
@@ -10,6 +11,8 @@ export const Login = (props) => {
         console.log(JSON.stringify(email, null, 2));
         e.preventDefault();
     }
+    const navigate = useNavigate();
+
 
     return(
         <div>
@@ -28,9 +31,7 @@ export const Login = (props) => {
             <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="password" id="password" placeholder="Password" name="password"></input>
             <button type="onSubmit">Login</button>
            </form>
-           <Link to='/register'>
-                <button>Register</button>
-           </Link>
+           <Link to={'/forgot-password'}><p>Forgot password</p></Link> 
         </div>
     )
 }; 
