@@ -1,4 +1,6 @@
+import React,{useState, useRef,useEffect} from "react";
 import { Link } from "react-router-dom"
+
 
 
 const Register= () => {
@@ -6,16 +8,77 @@ const Register= () => {
     const handleSubmit = e => {     
       
         e.preventDefault();
+        console.log(user);
     }
+    const userRegex=/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/;
+    const pwdRegex=/^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$/;
+    const userRef=useRef();
+    const errRef=useRef();
+
+    const [user, setUser]=useState();
+    const[validName, setValidName]=useState(false);
+    const [userFocus, setUserFocus]=useState(false);
+
+    const [password, setPassword]=useState();
+    const[validPassword, setValidPassword]=useState(false);
+    const [focusPassword, setFocusPassword]=useState(false);
+
+    const [matchPassword, setMatchPassword]=useState();
+    const[validMatchPassword, setValidMatchPassword]=useState(false);
+    const [focusMatchPassword, setFocusMatchPassword]=useState(false);
+
+    const [errMsg, setErrMsg]=useState('');
+    const [success,setSucess]=useState(false);
+
+    useEffect(
+        () => {
+            if (userRef.current) {
+                userRef.current.focus();
+            }
+        },
+        []
+    );
+    useEffect(
+        ()=>{
+            const result =userRegex.test(user);
+            console.log("test result==>"+result);
+            console.log(user);
+        },[user]
+    )
+    useEffect(
+        ()=>{
+            const result=pwdRegex.test(password);
+            console.log(result);
+            console.log(password);
+            const match = password===matchPassword;
+            setValidMatchPassword(match)
+        },[password,matchPassword]
+    );
+
+    useEffect(
+        ()=>{setErrMsg('')},[user, password,matchPassword]
+    );
 
     return(
+      
         <div>
+            <p ref={errRef} className={errMsg ? "errMsg" : "offScreen"} aria-live="assertive">{errMsg}</p>
+
+            <h1>Register</h1>
+
             <form className="form" onSubmit={handleSubmit}>
-                <label> Fisrt Name</label>
-                <input type="text" id="firstName" name="firstName"/>
+                <label htmlFor="user"> Username</label>
+                <input
+                     type="text" 
+                     id="firstName" 
+                     autoComplete="off" 
+                     value={user} 
+                     onChange={(e)=>  setUser(e.target.value)} 
+                     name="firstName"
+                />
                 <br/>
-                <label>Surname</label>
-                <input type="text" id="surname" name="surname"/>
+                <label htmlFor="password">Password</label>
+                <input type="password" id="password" autoComplete="off" name="surname"/>
                 <br/>
                  <label>Date of Birth</label>
                  <input type="text" id="DOB" name="DOB"/>
@@ -23,7 +86,7 @@ const Register= () => {
                 <label>Email</label>
                 <input type="text" id="lastName" name="lastName"/>
                 <label></label>
-                <button type="onSubmit">Register</button>
+                <button type="onSubmit" onClick={()=>{}}>Register</button>
            </form>
            <Link to='/login'>
                 <button>Sign In</button>    
@@ -31,5 +94,4 @@ const Register= () => {
         </div>
     )
 }
-
 export default Register;

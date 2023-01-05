@@ -1,45 +1,79 @@
-import React, { useState } from "react";
+import React, { useState,useRef,useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ForgotPasword from "./ForgotPassword";
+import Register from "./Register";
 
 export const Login = (props) => {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const  userRef=useRef();
+    const errRef =useRef();
+     
 
-    const handleSubmit = e => {     
-        console.log(JSON.stringify(email, null, 2));
+
+    const [user, setUser] =useState();
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState();
+    const [success, setSucess] = useState(); 
+
+    useEffect(
+        () => {
+            if (userRef.current) {
+                userRef.current.focus();
+            }
+        },
+        []
+    );
+
+    useEffect(
+        ()=>{
+            setErrorMessage('');
+        },[user,password]
+    );
+
+    const handleSummit= async(e)=>{
         e.preventDefault();
+        console.log('Password-->'+password,'Username-->'+user);
+        setPassword('');
+        setUser('');
+        setSucess(true);
+
     }
-    const navigate = useNavigate();
+
+
+    // const handleSubmit = e => {     
+    //     console.log(JSON.stringify(email, null, 2));
+    //     e.preventDefault();
+    // }
+    // const navigate = useNavigate();
 
     return(
-        <div>
-
-           <form className="form" onSubmit={handleSubmit}>
-            <label> Email</label>
-            <input
-                value={email}
-                onChange={(e)=>{setEmail(e.target.value)}}
-                type="email"
-                id="email"
-                placeholder="yourname@gmail.com"
-                name="email"ls
+      <section>
+        <p ref={errRef}  className={errorMessage ? "error Message" :"offScreen"}></p>
+        <h1>Sign In</h1>
+        <form onSubmit={handleSummit}>
+            <label htmlFor="username">Username</label>
+            <input type={"text"}
+                id="username" 
+                ref={userRef}
+                autoComplete="off" 
+                onChange={(e)=> setUser(e.target.value)}
+                value={user} 
+                required
             />
-            <br/>
-            <label>Password</label>
-            <input 
+            <label htmlFor="password">Password</label>
+            <input type={"password"}
+                id="passsword" 
+                autoComplete="off" 
+                onChange={(e)=> setPassword(e.target.value)}
                 value={password} 
-                onChange={(e)=>{setPassword(e.target.value)}} 
-                type="password" 
-                id="password" 
-                placeholder="Password" 
-                name="password"
+                required
             />
-            <button type="onSubmit">Login</button>
-           </form>
-           <Link to={'/forgot-password'}><p>Forgot password</p></Link> 
-           <button onClick={()=>navigate('/')}>Home</button>
-        </div>
-    )
+            <button onClick={()=>{}}>Sign In</button>
+            <p>
+                Need an Account?
+                <Link to={'/register'}>Sign Up</Link>
+            </p>
+        </form>
+      </section>
+    )       
 }; 
