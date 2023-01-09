@@ -3,15 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 
 const ForgotPasword = () => {
 
-    const navigate = useNavigate();
+   const navigate = useNavigate();
 
     return (
         <div>
             <h1>Forgot Password</h1>
-            <Link to={'/reset-password'}>Reset Password</Link>
-            <button onClick={() => navigate('/reset-password')}>this does the same thing</button>
+            <label>Username or Email</label><br/>       
+            <input type={"text"}></input>
+            <button onClick={() => navigate('/reset-password')}>Continue</button>
+            <button onMouseDown={() => navigate('/login')}>back</button>
         </div>
     )
-
 }
-export default ForgotPasword;
+export default ForgotPasword;   

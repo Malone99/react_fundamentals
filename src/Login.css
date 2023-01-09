@@ -1,0 +1,61 @@
+.form-Login{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(171, 180, 188);
+    padding: 90px 0 90px 0;
+    text-align: center;
+    background-color: grey;
+   
+
+}
+.login-subform{
+    display: flex;
+    justify-content: center;
+    height: 550px;
+    width: 35%;
+    background-color: white;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+    border-radius: 20px;
+    border: 3px solid #ccc;
+}
+.imgs{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.container-img{
+    border-radius: 10px;
+    background-color: grey !important;
+}
+.userName{
+    justify-content: center;
+    height: 20pxpx
+}
+
+.passwd{
+    justify-content: center;
+    width: 300px;
+   border-radius: 30px;
+   height: 30px;
+   box-shadow: 0px 0px 25px 0px #888;
+   justify-content: center;
+   margin-bottom: 40px;
+}
+.input{
+   width: 300px;
+   border-radius: 30px;
+   height: 30px;
+   box-shadow: 0px 0px 25px 0px #888;
+   justify-content: center;
+   margin-bottom: 40px;
+   
+}
+.userInput{
+    height: 30px;
+    border-radius: 30px;
+    border: 3px solid #ccc;
+    position: absolute;
+    
+    
+
+}

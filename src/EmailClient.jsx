@@ -7,7 +7,6 @@ const EmailClient= () => {
             <h2>EmailServer</h2>
             <button>reset password{"-->"}</button>
         </div>
-
     )
 }
 export default EmailClient;
