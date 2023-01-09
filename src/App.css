@@ -1,5 +1,8 @@
+
 .App {
   text-align: center;
+ 
+  
 }
 
 .App-logo {
@@ -36,3 +39,9 @@
     transform: rotate(360deg);
   }
 }
+.date{
+    font-family:'Times New Roman', Times, serif  ;
+    background: "#f0f0f0"
+}
+
+

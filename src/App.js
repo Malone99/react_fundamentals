@@ -7,6 +7,7 @@ import ResetPassword from './ResetPassword';
 import ForgotPasword from './ForgotPassword';
 import EmailClient from './EmailClient';
 import { Link, useNavigate } from "react-router-dom";
+import logo from "./logo/background.jpeg";
 
 
 
@@ -14,11 +15,13 @@ function App() {
 
   return (
     <div className="App">
+       
         <Routes >
           <Route 
               path='/'
               element={
-                <div>   
+                <div>
+                  <image></image>   
                   <Link to='/login'>Click me Friend</Link>
                 </div>}>
           </Route>

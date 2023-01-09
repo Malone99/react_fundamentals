@@ -1,5 +1,6 @@
 import React,{useState, useRef,useEffect} from "react";
 import { Link } from "react-router-dom"
+import DatePicker from "react-datepicker";
 
 
 
@@ -30,14 +31,22 @@ const Register= () => {
     const [errMsg, setErrMsg]=useState('');
     const [success,setSucess]=useState(false);
 
+    const [startDate, setStartDate] = useState(new Date());
+    
     useEffect(
         () => {
-            if (userRef.current) {
-                userRef.current.focus();
-            }
-        },
-        []
-    );
+            console.log("D.O.B -->"+startDate);
+            },[startDate]
+    )
+
+    // useEffect(
+    //     () => {
+    //         if (userRef.current) {
+    //             userRef.current.focus();
+    //         }
+    //     },
+    //     []
+    // );
     useEffect(
         ()=>{
             const result =userRegex.test(user);
@@ -77,14 +86,23 @@ const Register= () => {
                      name="firstName"
                 />
                 <br/>
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" autoComplete="off" name="surname"/>
+                    <label htmlFor="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        autoComplete="off" 
+                        name="surname"
+                    />
                 <br/>
-                 <label>Date of Birth</label>
-                 <input type="text" id="DOB" name="DOB"/>
-                <br/>
+                <label>Date of Birth</label>
+                <input className="date" type="date" onChange={(e)=>setStartDate(e.target.value)}/>
+                <br />
                 <label>Email</label>
-                <input type="text" id="lastName" name="lastName"/>
+                <input 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName"
+                />
                 <label></label>
                 <button type="onSubmit" onClick={()=>{}}>Register</button>
            </form>
