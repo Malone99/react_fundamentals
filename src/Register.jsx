@@ -39,14 +39,6 @@ const Register= () => {
             },[startDate]
     )
 
-    // useEffect(
-    //     () => {
-    //         if (userRef.current) {
-    //             userRef.current.focus();
-    //         }
-    //     },
-    //     []
-    // );
     useEffect(
         ()=>{
             const result =userRegex.test(user);

@@ -15,10 +15,15 @@ export const Login = (props) => {
 
    
 
-    const [user, setUser] =useState();
+    const [username , setUsername ] =useState();
+    const[validUsername, setValidUsername ]=useState(false);
     const [password, setPassword] = useState("");
+    
     const [errorMessage, setErrorMessage] = useState();
     const [success, setSucess] = useState(); 
+
+        const userRegex=/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/;
+        const passwordRegex=/^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$/;
 
     useEffect(
         () => {
@@ -29,30 +34,40 @@ export const Login = (props) => {
         []
     );
 
+    // useEffect(
+    //     () => {
+    //         if (!username.isEmpty()) {
+    //             userRef.current.focus();
+    //             console.log("is focused", userRef);
+    //         }
+    //     },
+    //     [username]
+    // );
+    useEffect(
+    ()=>{
+        const isValid=userRegex.test(username);
+        console.log("Valid username-->"+ isValid);
+
+    },[username]
+    );
+
     useEffect(
         ()=>{
             setErrorMessage('');
-        },[user,password]
+        },[username ,password]
     );
 
     const handleSummit= async(e)=>{
         e.preventDefault();
-        console.log('Password-->'+password,'Username-->'+user);
+        console.log('Password-->'+password,'Username-->'+username );
         setPassword('');
-        setUser('');
+        setUsername ('');
         setSucess(true);
 
     }
 
-
-    // const handleSubmit = e => {     
-    //     console.log(JSON.stringify(email, null, 2));
-    //     e.preventDefault();
-    // }
-    // const navigate = useNavigate();
-
     return(
-      <section className="form-Login">
+      <div className="form-Login">
         
          <p ref={errRef}  className={errorMessage ? "error Message" :"offScreen"}></p>
          <div className="login-subform">
@@ -76,8 +91,8 @@ export const Login = (props) => {
                     placeholder="           username"
                     ref={userRef}
                     autoComplete="off" 
-                    onChange={(e)=> setUser(e.target.value)}
-                    value={user} 
+                    onChange={(e)=> setUsername (e.target.value)}
+                    value={username } 
                     required
                 />
           </div>      
@@ -101,6 +116,6 @@ export const Login = (props) => {
            
             </form>
             </div>
-      </section>
+      </div>
     )       
 }; 
