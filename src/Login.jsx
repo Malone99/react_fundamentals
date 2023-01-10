@@ -24,6 +24,7 @@ export const Login = (props) => {
 
         const userRegex=/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/;
         const passwordRegex=/^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$/;
+        const h1Color={color:'blue'}
 
     useEffect(
         () => {
@@ -62,7 +63,7 @@ export const Login = (props) => {
          <p ref={errRef}  className={errorMessage ? "error Message" :"offScreen"}></p>
          <div className="login-subform">
             <form onSubmit={handleSummit}>
-            <h1>Sign In</h1>
+            <h1 style={h1Color}>Sign In</h1>
             <div>
                 <div className="imgs">
                     <div className="container-img">
