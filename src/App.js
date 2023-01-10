@@ -6,46 +6,30 @@ import { Route, Routes } from 'react-router-dom';
 import ResetPassword from './ResetPassword';
 import ForgotPasword from './ForgotPassword';
 import EmailClient from './EmailClient';
+import { Link, useNavigate } from "react-router-dom";
+import logo from "./logo/background.jpeg";
 
-// route === "login" && <Login setRoute={setRoute} />
-// if route === "login" then return <Login />
-// if route !== "login" then return fasle
 
-// a && b -> if a is true then return b
-// if a is false then return a (false)
-
-// in react we can use any falsy value to render nothing
-
-const routes = [
-  {
-    path: '/login',
-    element: <Login />
-  },
-  {
-    path: '/register',
-    element: <Register />
-  }
- 
-]
 
 function App() {
 
   return (
     <div className="App">
-      
+       
         <Routes >
+          <Route 
+              path='/'
+              element={
+                <div>
+                  <image></image>   
+                  <Link to='/login'>Click me Friend</Link>
+                </div>}>
+          </Route>
           <Route path='/login'  element={<Login></Login>}></Route>
           <Route path='/register'  element={<Register></Register>}></Route>
           <Route path='/forgot-password' element= {<ForgotPasword></ForgotPasword>}></Route>
-          <Route path='/reset-password'  element={<ResetPassword></ResetPassword>}></Route>
-        </Routes>
-        <ForgotPasword> </ForgotPasword>
-      
-      {/* {
-        routes.map(route => (
-          window.location.href.includes(route.path) ? route.element : null
-        ))
-      } */}
+          <Route path='/reset-password'  element={<ResetPassword></ResetPassword>}></Route> s
+        </Routes>   
     </div>
   );
 }
