@@ -27,22 +27,12 @@ export const Login = (props) => {
 
     useEffect(
         () => {
-            if (userRef.current) {
-                userRef.current.focus();
-            }
+            userRef.current.focus();
         },
         []
     );
 
-    // useEffect(
-    //     () => {
-    //         if (!username.isEmpty()) {
-    //             userRef.current.focus();
-    //             console.log("is focused", userRef);
-    //         }
-    //     },
-    //     [username]
-    // );
+    
     useEffect(
     ()=>{
         const isValid=userRegex.test(username);
@@ -81,14 +71,16 @@ export const Login = (props) => {
                 </div>
             </div>
 
-
+                <div>
+                <img src={email}  className="icon-email"></img>
+                </div>
      <div>
         <div>
-               <img src={email}  className="userInput"></img>
+               
                 <input className="input" 
                     type={"text"}
                     id="username" 
-                    placeholder="           username"
+                    placeholder=" username"
                     ref={userRef}
                     autoComplete="off" 
                     onChange={(e)=> setUsername (e.target.value)}
@@ -101,6 +93,8 @@ export const Login = (props) => {
                 <input className="passwd"
                     type={"password"}
                     id="passsword" 
+                    placeholder="Password"
+
                     autoComplete="off" 
                     onChange={(e)=> setPassword(e.target.value)}
                     value={password} 
