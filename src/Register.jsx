@@ -70,7 +70,7 @@ const Register= () => {
 
     return(
       
-        <div>
+        <div className="Form-Register">
             <p ref={errRef} className={errMsg ? "errMsg" : "offScreen"} aria-live="assertive">{errMsg}</p>
 
             <h1>Register</h1>
