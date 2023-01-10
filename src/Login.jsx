@@ -20,10 +20,9 @@ export const Login = (props) => {
     const [password, setPassword] = useState("");
     
     const [errorMessage, setErrorMessage] = useState();
-    const [success, setSucess] = useState(); 
+    const [success, setSucess] = useState(false); 
 
         const userRegex=/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/;
-        const passwordRegex=/^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$/;
         const h1Color={color:'blue'}
 
     useEffect(
@@ -38,6 +37,8 @@ export const Login = (props) => {
     ()=>{
         const isValid=userRegex.test(username);
         console.log("Valid username-->"+ isValid);
+        if(isValid)
+        setValidUsername(true)
 
     },[username]
     );
@@ -50,10 +51,15 @@ export const Login = (props) => {
 
     const handleSummit= async(e)=>{
         e.preventDefault();
-        console.log('Password-->'+password,'Username-->'+username );
+       
+        if(validUsername===true){ 
         setPassword('');
         setUsername ('');
         setSucess(true);
+        console.log('Login'+ success+'/nPassword-->'+password,'Username-->'+username )}
+        else{
+            setErrorMessage('Login-->'+success+'  Invalid username');}
+       console.log(errorMessage)
 
     }
 
